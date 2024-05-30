@@ -34,14 +34,6 @@ optional = false
 python-versions = ">=3.8"
 
 [[package]]
-name = "cachelib"
-version = "0.9.0"
-description = "A collection of cache libraries in the same API interface."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-
-[[package]]
 name = "certifi"
 version = "2024.2.2"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -160,19 +152,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "dash-extensions"
-version = "0.0.41"
-description = "Extensions for Plotly Dash."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-dash = "*"
-Flask-Caching = "*"
-more-itertools = "*"
-
-[[package]]
 name = "dash-html-components"
 version = "2.0.0"
 description = "Vanilla HTML components for Dash"
@@ -239,18 +218,6 @@ Werkzeug = ">=3.0.0"
 [package.extras]
 async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
-
-[[package]]
-name = "flask-caching"
-version = "2.3.0"
-description = "Adds caching support to Flask applications."
-category = "main"
-optional = false
-python-versions = ">=3.8"
-
-[package.dependencies]
-cachelib = ">=0.9.0,<0.10.0"
-Flask = "*"
 
 [[package]]
 name = "h11"
@@ -375,14 +342,6 @@ description = "Safely add untrusted strings to HTML/XML markup."
 category = "main"
 optional = false
 python-versions = ">=3.7"
-
-[[package]]
-name = "more-itertools"
-version = "10.2.0"
-description = "More routines for operating on iterables, beyond itertools"
-category = "main"
-optional = false
-python-versions = ">=3.8"
 
 [[package]]
 name = "mouseinfo"
@@ -842,13 +801,12 @@ testing = ["pytest (>=6,<8.1.0 || >=8.2.0)", "pytest-checkdocs (>=2.4)", "pytest
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "3cd5b87cf5e07583400422bd773d6490bb1731ac9ae4ac5f467ceb217309b416"
+content-hash = "a551674f1ed119dcaa4ca9b642ebb243decaf22ad14bee7ff6d75cca67471f5a"
 
 [metadata.files]
 annotated-types = []
 anyio = []
 blinker = []
-cachelib = []
 certifi = []
 cffi = []
 charset-normalizer = []
@@ -858,14 +816,12 @@ cryptography = []
 dash = []
 dash-bootstrap-components = []
 dash-core-components = []
-dash-extensions = []
 dash-html-components = []
 dash-table = []
 deprecated = []
 distro = []
 exceptiongroup = []
 flask = []
-flask-caching = []
 h11 = []
 httpcore = []
 httpx = []
@@ -876,7 +832,6 @@ itsdangerous = []
 jinja2 = []
 lxrbckl = []
 markupsafe = []
-more-itertools = []
 mouseinfo = []
 nest-asyncio = []
 openai = []

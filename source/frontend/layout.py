@@ -1,9 +1,7 @@
 # import <
 from dash import (dcc, html)
 from lxrbckl.local import fileGet
-from dash_extensions import Download
 import dash_bootstrap_components as dbc
-from dash_extensions.snippets import send_file
 
 # >
 
@@ -40,7 +38,12 @@ class layout:
             children = [
                
                # modal <
-               self.modal(),
+               html.Div(
+                  
+                  id = 'modalId', 
+                  children = None
+                  
+               ),
                
                # >
                
@@ -67,26 +70,27 @@ class layout:
                   dbc.Input(
                      
                      value = None,
-                     className = None,
-                     id = f'{k}InputId',
-                     placeholder = k.title()
+                     id = f'{k}Id',
+                     placeholder = k.title(),
+                     className = None
                      
                   )
                   
-               for k, v in (self.setup).items()],
+               for k in (self.setup).keys()],
                html.Hr(),
                
                *[
                                     
                   dbc.Textarea(
                      
-                     className = None,
-                     id = f'{k}TextareaId',
-                     placeholder = k.title()
+                     value = None,
+                     id = f'{k}Id',
+                     placeholder = k.title(),
+                     className = None
                      
                   )
                   
-               for k, v in (self.form).items()],
+               for k in (self.form).keys()],
                html.Hr(),
                
                # >
@@ -98,6 +102,8 @@ class layout:
                   direction = 'horizontal',
                   children = [
                      
+                     # build <
+                     # refresh <
                      dbc.Button(
                         
                         size = 'sm',
@@ -115,6 +121,8 @@ class layout:
                         
                      )
                      
+                     # >
+                     
                   ]
                   
                )
@@ -124,52 +132,5 @@ class layout:
             ]
             
          )
-         
-      )
-      
-   
-   def modal(self):
-      '''  '''
-      
-      return dbc.Modal(
-         
-         id = 'modalId',
-         is_open = True,
-         children = [
-            
-            dbc.ModalHeader(
-               
-               className = None,
-               children = dbc.ModalTitle(children = 'Preview')
-               
-            ),
-            dbc.ModalBody(
-               
-
-            
-            ),
-            dbc.ModalFooter(
-               
-               className = None,
-               children = [
-                  
-                  dcc.Download(
-                     
-                     id = 'dccDownloadId'
-                     
-                  ),
-                  dbc.Button(
-                     
-                     size = 'sm',
-                     id = 'dbcDownloadId',
-                     children = 'Download'
-                     
-                  )
-                  
-               ]
-               
-            )
-            
-         ]
          
       )
