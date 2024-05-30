@@ -7,7 +7,7 @@ from source.configuration import (application, server)
 
 
 if (__name__ == '__main__'):
-   
+      
    objLayout = layout()
    objCallbacks = callbacks()
    
