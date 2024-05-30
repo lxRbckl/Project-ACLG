@@ -1,20 +1,16 @@
 # import <
-from dash import Dash
-from dash_bootstrap_components import themes
+from source.frontend.layout import layout
+from source.frontend.callbacks import callbacks
+from source.configuration import (application, server)
 
 # >
 
 
-application = Dash(
+if (__name__ == '__main__'):
    
-   name = 'ACLG',
-   title = 'ACLG',
-   suppress_callback_exceptions = True,
-   external_stylesheets = [
-      
-      themes.GRID,
-      themes.BOOTSTRAP
-      
-   ]
+   objLayout = layout()
+   objCallbacks = callbacks()
    
-)
+   application.layout = objLayout.layout
+   
+   application.run(debug = True, port = 8059)
