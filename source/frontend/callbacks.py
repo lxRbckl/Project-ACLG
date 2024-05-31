@@ -3,7 +3,6 @@ from .modal import modal
 from ..configuration import data
 
 from ..configuration import application
-from lxrbckl.local import (fileSet, fileGet)
 from dash.dependencies import (Input, Output, State)
 
 # >
@@ -30,16 +29,21 @@ class callbacks:
       '''  '''
       
       pass
-      
-      # @application.callback(
+   
+      @application.callback(
          
-      #    Output('modalId', 'children'),
-      #    Input('buildId', 'n_clicks'),
-      #    [State('{k}Id')]
-      #    prevent_initial_call = True
+         Output('modalId', 'children'),
+         Input('buildId', 'n_clicks'),
+         [State(f'{k}Id', 'value') for k in (self.data.body).keys()],
+         prevent_initial_call = True
          
-      # )
-      # def func(*args): return (self.modal).modal
+      )
+      def func(*args):
+                  
+         prop = (self.data.details + self.data.form)
+         ref = {k : v for k, v in zip(prop, args[1:])}
+         
+         
    
    
    def callbackRefresh(self):

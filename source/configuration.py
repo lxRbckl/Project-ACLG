@@ -31,6 +31,7 @@ class data:
       
       self.fpath = '/source/data'
       
+      self.modifiable = ['letter']
       self.form = ['reason', 'letter']
       self.details = ['company', 'position']
       
@@ -44,4 +45,7 @@ class data:
    
    
    @body.setter
-   def body(self, val): fileSet(pData = val, pFile = f'{self.fpath}/body.json')
+   def body(self, val): 
+      
+      print('val', val) # remove
+      # fileSet(pData = val, pFile = f'{self.fpath}/body.json')
