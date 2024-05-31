@@ -1,16 +1,9 @@
 {
 
-   "details" : {
-
-      "company" : "",
-      "position" : ""
-
-   },
-   "form" : {
-
-      "letter" : "",
-      "reason" : ""
-
-   }
+   "company" : "",
+   "position" : "",
+   
+   "reason" : "",
+   "letter" : ""
 
 }

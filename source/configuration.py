@@ -31,18 +31,17 @@ class data:
       
       self.fpath = '/source/data'
       
-      
-   @property
-   def body(self): return fileGet(pFile = f'{self.fpath}/body.json')
+      self.form = ['reason', 'letter']
+      self.details = ['company', 'position']
       
       
    @property
    def header(self): return fileGet(pFile = f'{self.fpath}/header.json')
    
    
+   @property
+   def body(self): return fileGet(pFile = f'{self.fpath}/body.json')
+   
+   
    @body.setter
    def body(self, val): fileSet(pData = val, pFile = f'{self.fpath}/body.json')
-   
-   
-   @header.setter
-   def header(self, val): fileSet(pData = val, pFile = f'{self.fpath}/header.json')

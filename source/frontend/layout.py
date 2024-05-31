@@ -73,27 +73,25 @@ class layout:
                   dbc.Input(
                      
                      value = None,
-                     id = f'{k}Id',
-                     placeholder = k.title(),
+                     id = f'{i}Id',
+                     placeholder = i.title(),
                      className = None
                      
                   )
                   
-               for k in (self.body['details']).keys()],
-               html.Hr(),
-               
+               for i in self.data.details],               
                *[
                                     
                   dbc.Textarea(
                      
                      value = None,
-                     id = f'{k}Id',
-                     placeholder = k.title(),
+                     id = f'{i}Id',
+                     placeholder = i.title(),
                      className = None
                      
                   )
                
-               for k in (self.body['form']).keys()],
+               for i in self.data.form],
                html.Hr(),
                
                # >

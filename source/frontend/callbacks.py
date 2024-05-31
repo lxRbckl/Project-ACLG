@@ -1,5 +1,6 @@
 # import <
 from .modal import modal
+from ..configuration import data
 
 from ..configuration import application
 from lxrbckl.local import (fileSet, fileGet)
@@ -14,8 +15,8 @@ class callbacks:
    def __init__(self):
       '''  '''
       
+      self.data = data()
       self.modal = modal()
-      
    
    
    def register(self):
@@ -44,22 +45,13 @@ class callbacks:
    def callbackRefresh(self):
       '''  '''
       
-      pass
-      
-      # body = {
+      @application.callback(
          
-      #    **fileGet(pFile = 'source/data/form.json'),
-      #    **fileGet(pFile = 'source/data/setup.json')
+         [Output(f'{k}Id', 'value') for k in (self.data.body).keys()],
+         Input('refreshId', 'n_clicks')
          
-      # }
-      
-      # @application.callback(
-         
-      #    [Output(f'{k}Id', 'value') for k in body.keys()],
-      #    Input('refreshId', 'n_clicks')
-         
-      # )
-      # def func(*args): return [v for v in body.values()]
+      )
+      def func(*args): return [v for v in self.data.body.values()]
       
       
    
