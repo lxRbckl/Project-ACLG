@@ -1,8 +1,7 @@
 # import <
-from .modal import modal
 from ..configuration import data
-from ..backend.form_builder import form_builder
-from ..backend.pdf_generator import pdf_generator
+from ..backend.build_letter import build_letter
+from ..backend.generate_pdf import generate_pdf
 
 from ..configuration import application
 from dash.dependencies import (Input, Output, State)
@@ -17,6 +16,8 @@ class callbacks:
       '''  '''
       
       self.data = data()
+      self.build_letter = build_letter()
+      self.generate_pdf = generate_pdf()
    
    
    def register(self):
@@ -39,9 +40,9 @@ class callbacks:
             # Output('downloadId', 'download')
          
          ],
+         prevent_initial_call = True,
          inputs = [Input('buildId', 'n_clicks')],
          state = [State(f'{k}Id', 'value') for k in (self.data.body).keys()],
-         prevent_initial_call = True
          
       )
       def func(*args):
@@ -51,7 +52,13 @@ class callbacks:
          prop = (self.data.details + self.data.form)
          ref = {k : v for k, v in zip(prop, args[1:])}
          
+         # save body.format <
+         # build & get letter <
+         # convert letter to pdf <
+         self.data.body = ref
          
+         
+         # >
          
          return [True]
    
@@ -65,7 +72,4 @@ class callbacks:
          output = [Output(f'{k}Id', 'value') for k in (self.data.body).keys()]
          
       )
-      def func(*args): 
-         
-         print('refresh', args) # remove
-         return [v for v in (self.data.body).values()]
+      def func(*args): return [v for v in (self.data.body).values()]

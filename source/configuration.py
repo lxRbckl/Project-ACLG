@@ -29,23 +29,26 @@ class data:
    def __init__(self):
       '''  '''
       
-      self.fpath = '/source/data'
+      self._datapath = '/source/data'
+      self._uploadpath = '/source/assets'
       
-      self.modifiable = ['letter']
-      self.form = ['reason', 'letter']
+      self._modifiable = ['format']
+      self.form = ['reason', 'format']
       self.details = ['company', 'position']
       
       
    @property
-   def header(self): return fileGet(pFile = f'{self.fpath}/header.json')
+   def header(self): return fileGet(pFile = f'{self._datapath}/header.json')
    
    
    @property
-   def body(self): return fileGet(pFile = f'{self.fpath}/body.json')
+   def body(self): return fileGet(pFile = f'{self._datapath}/body.json')
    
    
    @body.setter
-   def body(self, val): 
+   def body(self, ref): 
       
-      print('val', val) # remove
-      # fileSet(pData = val, pFile = f'{self.fpath}/body.json')
+      if (ref != (body := self.body)): 
+      
+         for i in self._modifiable: body[i] = ref[i]
+         fileSet(pData = body, pFile = f'{self._datapath}/body.json')

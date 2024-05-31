@@ -4,7 +4,7 @@
 # >
 
 
-class pdf_generator:
+class generate_pdf:
    
    
    def __init__(self):

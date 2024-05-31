@@ -1,5 +1,6 @@
 *.pyc
+.vscode
 .DS_Store
 __pycache__
+source/assets
 .python-version
-source/assets/*
