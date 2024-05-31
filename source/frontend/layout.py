@@ -1,9 +1,8 @@
 # import <
 from .modal import modal
-from ..configuration import data
+from ..data.manage_data import manageData
 
-from dash import (dcc, html)
-from lxrbckl.local import fileGet
+from dash import html
 import dash_bootstrap_components as dbc
 
 # >
@@ -15,10 +14,9 @@ class layout:
    def __init__(self):
       '''  '''
       
-      self.data = data()
       self.modal = modal()
-      self.body = (self.data).body
-      self.header = (self.data).header
+      self.manageData = manageData()
+      self.header = self.manageData.header
    
    
    @property
@@ -76,7 +74,7 @@ class layout:
                      
                   )
                   
-               for i in self.data.details],               
+               for i in self.manageData.details],               
                *[
                                     
                   dbc.Textarea(
@@ -88,11 +86,12 @@ class layout:
                      
                   )
                
-               for i in self.data.letter],
+               for i in self.manageData.letter],
                html.Hr(),
                
                # >
 
+               # footer <
                dbc.Row(
                   
                   justify = 'between',
@@ -132,6 +131,8 @@ class layout:
                   ]
                   
                )
+               
+               # >
 
             ]
             

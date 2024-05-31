@@ -4,19 +4,29 @@
 # >
 
 
-class build_letter:
+class buildLetter:
    
    
    def __init__(self):
       '''  '''
       
       self._letter = None
+      self._company = '[company]'
+      self._position = '[position]'
+      self._reasoning = '[reasoning]'
 
 
    def build(self, ref):
       '''  '''
       
-      pass
+      format = ref['format']
+      
+      # replace company <
+      # replace position <
+      # replace reasoning <
+      format.replace('')
+      
+      # >
    
    
    @property

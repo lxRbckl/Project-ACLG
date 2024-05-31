@@ -26,6 +26,7 @@ class modal:
          centered = True,
          children = [
             
+            # header <
             dbc.ModalHeader(
                
                className = None,
@@ -33,6 +34,10 @@ class modal:
                children = dbc.ModalTitle('Preview')
                
             ),
+            
+            # >
+            
+            # body <
             dbc.ModalBody(
                
                dbc.Textarea(
@@ -45,6 +50,10 @@ class modal:
                )
             
             ),
+            
+            # >
+            
+            # footer <
             dbc.ModalFooter(
                
                className = None,
@@ -89,6 +98,8 @@ class modal:
                )
                
             )
+            
+            # >
             
          ]
          
