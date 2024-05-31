@@ -15,7 +15,7 @@ class callbacks:
    def __init__(self):
       '''  '''
       
-      self.manageData = manageData()
+      self.data = manageData()
       self.buildLetter = buildLetter()
       self.generatePDF = generatePDF()
    
@@ -42,21 +42,21 @@ class callbacks:
          ],
          prevent_initial_call = True,
          inputs = [Input('buildId', 'n_clicks')],
-         state = [State(f'{k}Id', 'value') for k in (self.manageData.body).keys()],
+         state = [State(f'{k}Id', 'value') for k in (self.data.body).keys()],
          
       )
       def func(*args):
-         
-         print('build', args) # remove
-                  
-         props = (self.manageData.details + self.manageData.letter)
+                           
+         props = (self.data.details + self.data.letter)
          ref = {k : v for k, v in zip(props, args[1:])}
          
-         # save body.format <
+         # save modifiables <
          # build & get letter <
-         # convert letter to pdf <
-         self.manageData.body = ref
-         letter = (self.build_letter.build(ref)).letter
+         # convert to pdf & upload <
+         self.data.body = ref
+         
+         self.buildLetter.build(ref)
+         letter = self.buildLetter.letter
          
          # >
          
@@ -69,7 +69,7 @@ class callbacks:
       @application.callback(
          
          inputs = [Input('refreshId', 'n_clicks')],
-         output = [Output(f'{k}Id', 'value') for k in (self.manageData.body).keys()]
+         output = [Output(f'{k}Id', 'value') for k in (self.data.body).keys()]
          
       )
-      def func(*args): return [v for v in (self.manageData.body).values()]
+      def func(*args): return [v for v in (self.data.body).values()]
