@@ -1,4 +1,6 @@
 # import <
+from ..configuration import data
+
 from dash import (dcc, html)
 from lxrbckl.local import fileGet
 import dash_bootstrap_components as dbc
@@ -12,8 +14,9 @@ class layout:
    def __init__(self):
       '''  '''
       
-      self.form = fileGet(pFile = 'source/data/form.json')
-      self.setup = fileGet(pFile = 'source/data/setup.json')
+      self.data = data()
+      self.body = (self.data).body
+      self.header = (self.data).header
    
    
    @property
@@ -51,13 +54,13 @@ class layout:
                html.H2(
                   
                   className = None,
-                  children = 'Project ACLG'
+                  children = self.header['title']
                
                ),
                html.Small(
                   
                   className = None,
-                  children = 'Automated Cover Letter Generator'
+                  children = self.header['description']
                   
                ),
                html.Hr(),
@@ -76,7 +79,7 @@ class layout:
                      
                   )
                   
-               for k in (self.setup).keys()],
+               for k in (self.body['details']).keys()],
                html.Hr(),
                
                *[
@@ -89,35 +92,43 @@ class layout:
                      className = None
                      
                   )
-                  
-               for k in (self.form).keys()],
+               
+               for k in (self.body['form']).keys()],
                html.Hr(),
                
                # >
 
-               # footer <
-               dbc.Stack(
+               dbc.Row(
                   
-                  gap = 1,
-                  direction = 'horizontal',
+                  justify = 'between',
                   children = [
                      
                      # build <
                      # refresh <
-                     dbc.Button(
+                     dbc.Col(
                         
-                        size = 'sm',
-                        id = 'buildId',
-                        children = 'Build',
-                        className = None
+                        width = 'auto',
+                        children = dbc.Button(
+                           
+                           size = 'sm',
+                           id = 'buildId',
+                           children = 'Build',
+                           className = None
+                           
+                        )
                         
                      ),
-                     dbc.Button(
+                     dbc.Col(
                         
-                        size = 'sm',
-                        children = '⟳',
-                        id = 'refreshId',
-                        className = None
+                        width = 'auto',
+                        children = dbc.Button(
+                           
+                           size = 'sm',
+                           children = '⟳',
+                           id = 'refreshId',
+                           className = None
+                           
+                        )
                         
                      )
                      
@@ -126,9 +137,7 @@ class layout:
                   ]
                   
                )
-               
-               # >
-               
+
             ]
             
          )

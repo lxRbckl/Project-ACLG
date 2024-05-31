@@ -21,38 +21,45 @@ class callbacks:
    def register(self):
       '''  '''
       
-      # self.callbackBuild()
+      self.callbackBuild()
       self.callbackRefresh()
    
    
-   # def callbackBuild(self):
-   #    '''  '''
+   def callbackBuild(self):
+      '''  '''
       
-   #    @application.callback(
+      pass
+      
+      # @application.callback(
          
-   #       Output('modalId', 'children'),
-   #       Input('buildId', 'n_clicks'),
-   #       prevent_initial_call = True
+      #    Output('modalId', 'children'),
+      #    Input('buildId', 'n_clicks'),
+      #    [State('{k}Id')]
+      #    prevent_initial_call = True
          
-   #    )
-   #    def func(*args): return (self.modal).modal
+      # )
+      # def func(*args): return (self.modal).modal
    
    
    def callbackRefresh(self):
       '''  '''
       
-      body = {
-         
-         **fileGet(pFile = 'source/data/form.json'),
-         **fileGet(pFile = 'source/data/setup.json')
-         
-      }
+      pass
       
-      @application.callback(
+      # body = {
          
-         [Output(f'{k}Id', 'value') for k in body.keys()],
-         Input('refreshId', 'n_clicks'),
-         prevent_initial_call = True
+      #    **fileGet(pFile = 'source/data/form.json'),
+      #    **fileGet(pFile = 'source/data/setup.json')
          
-      )
-      def func(*args): return [v for v in body.values()]
+      # }
+      
+      # @application.callback(
+         
+      #    [Output(f'{k}Id', 'value') for k in body.keys()],
+      #    Input('refreshId', 'n_clicks')
+         
+      # )
+      # def func(*args): return [v for v in body.values()]
+      
+      
+   
