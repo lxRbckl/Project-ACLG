@@ -23,6 +23,7 @@ class callbacks:
       
       self.callbackBuild()
       self.callbackRefresh()
+      self.callbackDownload()
    
    
    def callbackBuild(self):
@@ -43,7 +44,7 @@ class callbacks:
          prop = (self.data.details + self.data.form)
          ref = {k : v for k, v in zip(prop, args[1:])}
          
-         
+         return self.modal.modal
    
    
    def callbackRefresh(self):
@@ -55,7 +56,20 @@ class callbacks:
          Input('refreshId', 'n_clicks')
          
       )
-      def func(*args): return [v for v in self.data.body.values()]
+      def func(*args): return [v for v in (self.data.body).values()]
       
       
-   
+   def callbackDownload(self):
+      '''  '''
+      
+      @application.callback(
+         
+         Output('previewId', 'children'),
+         Input('downloadId', 'children')
+         
+      )
+      def func(*args):
+         
+         print(args) # remove
+         
+         return 'this is an example'
