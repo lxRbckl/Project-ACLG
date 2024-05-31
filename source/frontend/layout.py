@@ -1,4 +1,5 @@
 # import <
+from .modal import modal
 from ..configuration import data
 
 from dash import (dcc, html)
@@ -15,6 +16,7 @@ class layout:
       '''  '''
       
       self.data = data()
+      self.modal = modal()
       self.body = (self.data).body
       self.header = (self.data).header
    
@@ -41,12 +43,7 @@ class layout:
             children = [
                
                # modal <
-               html.Div(
-                  
-                  id = 'modalId', 
-                  children = None
-                  
-               ),
+               self.modal.modal,
                
                # >
                

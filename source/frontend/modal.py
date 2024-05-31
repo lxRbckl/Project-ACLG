@@ -1,5 +1,5 @@
 # import <
-
+from dash import dcc
 import dash_bootstrap_components as dbc
 
 # >
@@ -22,13 +22,14 @@ class modal:
          
          size = 'lg',
          id = 'modalId',
-         is_open = True,
+         is_open = False,
          centered = True,
          children = [
             
             dbc.ModalHeader(
                
                className = None,
+               close_button = False,
                children = dbc.ModalTitle('Preview')
                
             ),
@@ -37,8 +38,8 @@ class modal:
                dbc.Textarea(
                   
                   value = None,
+                  id = 'formId',
                   disabled = True,
-                  id = 'previewId',
                   className = None
                   
                )
@@ -47,20 +48,45 @@ class modal:
             dbc.ModalFooter(
                
                className = None,
-               children = [
+               children = dbc.Row(
                   
-                  dbc.Button(
+                  justify = 'between',
+                  children = [
                      
-                     size = 'sm',
-                     href = None,
-                     download = None,
-                     id = 'downloadId',
-                     external_link = True,
-                     children = 'Download'
+                     # download <
+                     # clipboard <
+                     dbc.Col(
+                        
+                        width = 'auto',
+                        children = dbc.Button(
+                           
+                           size = 'sm',
+                           href = None,
+                           download = None,
+                           id = 'downloadId',
+                           external_link = True,
+                           children = 'Download'
+                           
+                        )
+                        
+                     ),
+                     dbc.Col(
+                        
+                        width = 'auto',
+                        children = dcc.Clipboard(
+                           
+                           title = 'Copy',
+                           target_id = 'formId'
+                           
+                        )
+                        
+                     )
                      
-                  )
+                     # >
+                     
+                  ]
                   
-               ]
+               )
                
             )
             

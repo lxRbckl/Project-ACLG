@@ -1,6 +1,8 @@
 # import <
 from .modal import modal
 from ..configuration import data
+from ..backend.form_builder import form_builder
+from ..backend.pdf_generator import pdf_generator
 
 from ..configuration import application
 from dash.dependencies import (Input, Output, State)
@@ -15,7 +17,6 @@ class callbacks:
       '''  '''
       
       self.data = data()
-      self.modal = modal()
    
    
    def register(self):
@@ -23,28 +24,36 @@ class callbacks:
       
       self.callbackBuild()
       self.callbackRefresh()
-      self.callbackDownload()
    
    
    def callbackBuild(self):
       '''  '''
       
-      pass
-   
       @application.callback(
          
-         Output('modalId', 'children'),
-         Input('buildId', 'n_clicks'),
-         [State(f'{k}Id', 'value') for k in (self.data.body).keys()],
+         output = [
+            
+            Output('modalId', 'is_open'),
+            # Output('formId', 'children'),
+            # Output('downloadId', 'href'),
+            # Output('downloadId', 'download')
+         
+         ],
+         inputs = [Input('buildId', 'n_clicks')],
+         state = [State(f'{k}Id', 'value') for k in (self.data.body).keys()],
          prevent_initial_call = True
          
       )
       def func(*args):
+         
+         print('build', args) # remove
                   
          prop = (self.data.details + self.data.form)
          ref = {k : v for k, v in zip(prop, args[1:])}
          
-         return self.modal.modal
+         
+         
+         return [True]
    
    
    def callbackRefresh(self):
@@ -52,24 +61,11 @@ class callbacks:
       
       @application.callback(
          
-         [Output(f'{k}Id', 'value') for k in (self.data.body).keys()],
-         Input('refreshId', 'n_clicks')
+         inputs = [Input('refreshId', 'n_clicks')],
+         output = [Output(f'{k}Id', 'value') for k in (self.data.body).keys()]
          
       )
-      def func(*args): return [v for v in (self.data.body).values()]
-      
-      
-   def callbackDownload(self):
-      '''  '''
-      
-      @application.callback(
+      def func(*args): 
          
-         Output('previewId', 'children'),
-         Input('downloadId', 'children')
-         
-      )
-      def func(*args):
-         
-         print(args) # remove
-         
-         return 'this is an example'
+         print('refresh', args) # remove
+         return [v for v in (self.data.body).values()]
