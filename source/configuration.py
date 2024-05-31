@@ -33,7 +33,7 @@ class data:
       self._uploadpath = '/source/assets'
       
       self._modifiable = ['format']
-      self.form = ['reason', 'format']
+      self.letter = ['reason', 'format']
       self.details = ['company', 'position']
       
       

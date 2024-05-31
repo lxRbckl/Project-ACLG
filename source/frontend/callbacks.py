@@ -49,8 +49,8 @@ class callbacks:
          
          print('build', args) # remove
                   
-         prop = (self.data.details + self.data.form)
-         ref = {k : v for k, v in zip(prop, args[1:])}
+         props = (self.data.details + self.data.form)
+         ref = {k : v for k, v in zip(props, args[1:])}
          
          # save body.format <
          # build & get letter <
