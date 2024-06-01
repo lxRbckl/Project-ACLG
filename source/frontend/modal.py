@@ -85,7 +85,7 @@ class modal:
                         children = dcc.Clipboard(
                            
                            title = 'Copy',
-                           target_id = 'formId'
+                           target_id = 'letterId'
                            
                         )
                         

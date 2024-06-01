@@ -71,9 +71,23 @@ class callbacks:
          self.buildLetter.build(ref)
          letter = self.buildLetter.letter
          
+         self.generatePDF.generate(
+            
+            letter,
+            ref['company'],
+            ref['signature'],
+            f'{self.data.projectpath}{self.data.uploadpath}'
+         
+         )
+         
          # >
          
-         return [letter, True]
+         return [
+            
+            letter, 
+            True
+         
+         ]
    
    
    def callbackRefresh(self):

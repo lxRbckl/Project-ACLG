@@ -1,5 +1,11 @@
 # import <
-from lxrbckl.local import (fileSet, fileGet)
+from lxrbckl.local import (
+   
+   fileSet, 
+   fileGet,
+   getProjectPath
+
+)
 
 # >
 
@@ -10,21 +16,21 @@ class manageData:
    def __init__(self):
       '''  '''
       
-      self._datapath = '/source/data'
-      self._uploadpath = '/source/assets'
-      
-      self._modifiable = ['format']
+      self._datapath = 'source/data'
+      self.uploadpath = 'source/assets'
+      self.projectpath = getProjectPath()
       
       self.letter = ['format']
-      self.details = ['company', 'position']
+      self._modifiable = ['signature', 'format']
+      self.details = ['company', 'position', 'signature']
       
       
    @property
-   def header(self): return fileGet(pFile = f'{self._datapath}/header.json')
+   def header(self): return fileGet(f'{self._datapath}/header.json')
    
    
    @property
-   def body(self): return fileGet(pFile = f'{self._datapath}/body.json')
+   def body(self): return fileGet(f'{self._datapath}/body.json')
    
    
    @body.setter
@@ -33,10 +39,4 @@ class manageData:
       if (ref != (body := self.body)): 
       
          for i in self._modifiable: body[i] = ref[i]
-         fileSet(pData = body, pFile = f'{self._datapath}/body.json')
-         
-         
-   def upload(self, filename, data):
-      '''  '''
-      
-      pass
+         fileSet(body, f'{self._datapath}/body.json')
