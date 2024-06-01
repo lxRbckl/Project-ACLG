@@ -49,8 +49,8 @@ class callbacks:
             
             Output('letterId', 'value'),
             Output('modalId', 'is_open'),
-            # Output('downloadId', 'href'),
-            # Output('downloadId', 'download')
+            Output('downloadId', 'href'),
+            Output('downloadId', 'download')
          
          ],
          prevent_initial_call = True,
@@ -85,7 +85,9 @@ class callbacks:
          return [
             
             letter, 
-            True
+            True,
+            '/assets/{}.pdf'.format(ref['company']),
+            'combine.pdf'
          
          ]
    

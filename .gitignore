@@ -2,5 +2,6 @@
 .vscode
 .DS_Store
 __pycache__
-/source/assets
+source/assets/*
 .python-version
+source/data/*
