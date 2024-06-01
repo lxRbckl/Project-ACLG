@@ -14,5 +14,5 @@ if (__name__ == '__main__'):
    objCallbacks.register()
    application.layout = objLayout.layout
    
-   application.run(debug = True, port = 8059)
+   application.run(host = '0.0.0.0', port = 8060)
    
