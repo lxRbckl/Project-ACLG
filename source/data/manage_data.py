@@ -14,7 +14,8 @@ class manageData:
       self._uploadpath = '/source/assets'
       
       self._modifiable = ['format']
-      self.letter = ['reasoning', 'format']
+      
+      self.letter = ['format']
       self.details = ['company', 'position']
       
       

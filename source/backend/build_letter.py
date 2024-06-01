@@ -13,7 +13,6 @@ class buildLetter:
       self._letter = None
       self._company = '[company]'
       self._position = '[position]'
-      self._reasoning = '[reasoning]'
 
 
    def build(self, ref):
@@ -23,10 +22,12 @@ class buildLetter:
       
       # replace company <
       # replace position <
-      # replace reasoning <
-      format.replace('')
+      format = format.replace(self._company, ref['company'])
+      format = format.replace(self._position, ref['position'])
       
       # >
+
+      self._letter = format
    
    
    @property

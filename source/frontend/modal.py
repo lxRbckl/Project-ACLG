@@ -43,7 +43,7 @@ class modal:
                dbc.Textarea(
                   
                   value = None, # <-
-                  id = 'formId',
+                  id = 'letterId',
                   disabled = True,
                   className = None
                   

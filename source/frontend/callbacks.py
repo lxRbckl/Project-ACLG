@@ -23,8 +23,31 @@ class callbacks:
    def register(self):
       '''  '''
       
+      self.callbackInput()
       self.callbackBuild()
       self.callbackRefresh()
+      
+      
+   def callbackInput(self):
+      '''  '''
+   
+      @application.callback(
+         
+         prevent_initial_call = True,
+         output = [Output('buildId', 'disabled')],
+         inputs = [Input(f'{i}Id', 'value') for i in self.data.details]
+         
+         
+      )
+      def func(*args):
+         '''  '''
+   
+         ref = {k : v for k, v in zip(self.data.details, args)}
+
+         isPosition = (len(ref['position']) > 0)
+         isCompany = (len(ref['company']) > 0)
+               
+         return [not (isPosition and isCompany)]
    
    
    def callbackBuild(self):
@@ -34,8 +57,8 @@ class callbacks:
          
          output = [
             
+            Output('letterId', 'value'),
             Output('modalId', 'is_open'),
-            # Output('formId', 'children'),
             # Output('downloadId', 'href'),
             # Output('downloadId', 'download')
          
@@ -60,7 +83,7 @@ class callbacks:
          
          # >
          
-         return [True]
+         return [letter, True]
    
    
    def callbackRefresh(self):

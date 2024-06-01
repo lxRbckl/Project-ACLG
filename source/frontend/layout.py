@@ -15,8 +15,8 @@ class layout:
       '''  '''
       
       self.modal = modal()
-      self.manageData = manageData()
-      self.header = self.manageData.header
+      self.data = manageData()
+      self.header = self.data.header
    
    
    @property
@@ -69,12 +69,13 @@ class layout:
                      
                      value = None,
                      id = f'{i}Id',
+                     required = None,
                      placeholder = i.title(),
                      className = None
                      
                   )
                   
-               for i in self.manageData.details],               
+               for i in self.data.details],               
                *[
                                     
                   dbc.Textarea(
@@ -86,7 +87,7 @@ class layout:
                      
                   )
                
-               for i in self.manageData.letter],
+               for i in self.data.letter],
                html.Hr(),
                
                # >
@@ -106,6 +107,7 @@ class layout:
                            
                            size = 'sm',
                            id = 'buildId',
+                           disabled = True,
                            children = 'Build',
                            className = None
                            
