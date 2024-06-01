@@ -29,8 +29,8 @@ class modal:
             # header <
             dbc.ModalHeader(
                
-               className = None,
                close_button = False,
+               className = 'modalHeader',
                children = dbc.ModalTitle('Preview')
                
             ),
@@ -40,12 +40,13 @@ class modal:
             # body <
             dbc.ModalBody(
                
-               dbc.Textarea(
+               className = 'modalBody',
+               children = dbc.Textarea(
                   
-                  value = None, # <-
+                  value = None,
                   id = 'letterId',
                   disabled = True,
-                  className = None
+                  className = 'textarea'
                   
                )
             
@@ -56,9 +57,10 @@ class modal:
             # footer <
             dbc.ModalFooter(
                
-               className = None,
+               className = 'modalFooter',
                children = dbc.Row(
                   
+                  className = 'modalFooterRow',
                   justify = 'between',
                   children = [
                      

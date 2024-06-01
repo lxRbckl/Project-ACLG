@@ -48,17 +48,17 @@ class layout:
                # header <
                html.H2(
                   
-                  className = None,
+                  className = 'title',
                   children = self.header['title']
                
                ),
                html.Small(
                   
-                  className = None,
+                  className = 'description',
                   children = self.header['description']
                   
                ),
-               html.Hr(),
+               html.Hr(className = 'divider'),
                
                # >
                
@@ -70,8 +70,8 @@ class layout:
                      value = None,
                      id = f'{i}Id',
                      required = None,
-                     placeholder = i.title(),
-                     className = None
+                     className = 'input',
+                     placeholder = i.title()
                      
                   )
                   
@@ -82,13 +82,13 @@ class layout:
                      
                      value = None,
                      id = f'{i}Id',
-                     placeholder = i.title(),
-                     className = None
+                     className = 'textarea',
+                     placeholder = i.title()
                      
                   )
                
                for i in self.data.letter],
-               html.Hr(),
+               html.Hr(className = 'divider'),
                
                # >
 
