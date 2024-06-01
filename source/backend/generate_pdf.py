@@ -17,7 +17,8 @@ class generatePDF:
    def __init__(self):
       '''  '''
       
-      pass
+      self._width = 171
+      self._height = 65
    
    
    def generate(
@@ -39,6 +40,13 @@ class generatePDF:
                
       convert = lambda i : Paragraph(i, style)
       output = [convert(i) for i in letter.split('\n')]
-      output.append(Image(signature, hAlign = 'LEFT'))
+      output.append(Image(
+         
+         signature, 
+         hAlign = 'LEFT',
+         width = self._width,
+         height = self._height,
+      
+      ))
       
       document.build(output)
