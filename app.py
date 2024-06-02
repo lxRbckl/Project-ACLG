@@ -1,4 +1,5 @@
 # import <
+from os import environ
 from source.frontend.layout import layout
 from source.frontend.callbacks import callbacks
 from source.configuration import (application, server)
@@ -7,6 +8,9 @@ from source.configuration import (application, server)
 
 
 if (__name__ == '__main__'):
+   
+   host = environ.get('HOST')
+   port = environ.get('PORT')
       
    objLayout = layout()
    objCallbacks = callbacks()
@@ -14,5 +18,5 @@ if (__name__ == '__main__'):
    objCallbacks.register()
    application.layout = objLayout.layout
    
-   application.run(host = '0.0.0.0', port = 8060)
+   application.run(host = host, port = port)
    
